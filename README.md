@@ -1,4 +1,4 @@
-# wicked-sales
+# techNet
 
 > - Maintained by: `dpaschal-lf`, `thebearingedge`
 
