@@ -76,7 +76,7 @@ const ArrowRight = ({ direction, clickFunction, glyph }) => (
 const ImageSlide = ({ setView, currentImageIndex, products, handleFeaturedItemClick, featuredItemClicked, url }) => {
   const styles = {
     backgroundImage: `url("${url}")`,
-    backgroundSize: 'contain',
+    backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center'
   };

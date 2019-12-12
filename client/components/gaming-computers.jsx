@@ -16,7 +16,7 @@ export default class GamingComputers extends React.Component {
   getComputerProducts() {
     const body = { computers: 1 };
     const init = { method: 'POST', body: JSON.stringify(body) };
-    fetch(`api/products.php`, init)
+    fetch(`/api/products.php`, init)
       .then(response => response.json())
       .then(computers => {
         this.setState({

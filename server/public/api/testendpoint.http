@@ -13,5 +13,5 @@ POST http://localhost:3000/api/products.php
 POST http://localhost:3000/api/products.php
 
 {
-  "misc": "1"
+  "accessories": "1"
 }

@@ -9,7 +9,7 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`api/products.php?id=${this.props.productId}`)
+    fetch(`/api/products.php?id=${this.props.productId}`)
       .then(response => response.json())
       .then(product => {
         this.setState({

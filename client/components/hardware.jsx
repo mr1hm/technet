@@ -16,7 +16,7 @@ export default class Hardware extends React.Component {
   getHardwareProducts() {
     const body = { hardware: 1 };
     const init = { method: 'POST', body: JSON.stringify(body) };
-    fetch(`api/products.php`, init)
+    fetch(`/api/products.php`, init)
       .then(response => response.json())
       .then(hardware => {
         this.setState({

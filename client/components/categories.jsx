@@ -19,17 +19,19 @@ export default class Categories extends React.Component {
             </a>
           </div>
           <div className="col-3 d-flex justify-content-center">
-            <a className="categoriesSections" onClick={() => this.props.setViewCategory('hardware', {})}>Computer Hardware</a>
+            <a className="categoriesSections" onClick={() => this.props.setViewCategory('hardware', {})}>
+              Computer Hardware
+            </a>
           </div>
           <div className="col-3 d-flex justify-content-center">
-            <span className="categoriesSections">
+            <a className="categoriesSections" onClick={() => this.props.setViewCategory('accessories', {})}>
               Accessories
-            </span>
+            </a>
           </div>
           <div className="col-3 d-flex justify-content-center">
-            <span className="categoriesSections">
+            <a className="categoriesSections" onClick={() => this.props.setViewCategory('misc', {})}>
               Misc
-            </span>
+            </a>
           </div>
         </div>
       </div>

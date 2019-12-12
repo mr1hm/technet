@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Switch, Route } from 'react-router-dom';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
@@ -9,6 +8,7 @@ import Categories from './categories';
 import GamingComputers from './gaming-computers';
 import Hardware from './hardware';
 import Misc from './miscellaneous';
+import Accessories from './accessories';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -156,6 +156,14 @@ export default class App extends React.Component {
           <Header text="Computer Hardware" setViewCart={this.setView} cartItemCount={this.state.cart.length} />
           <Categories setViewCategory={this.setView} cartItemCount={this.state.cart.length} />
           <Misc addToCart={this.addToCart} cartTotal={this.getCartTotal} cartSummary={this.state.cart} backToCatalog={this.setView} />
+        </div>
+      );
+    } else if (this.state.view.name === 'accessories') {
+      return (
+        <div className="container-fluid main">
+          <Header text="Accessories" setViewCart={this.setView} cartItemCount={this.state.cart.length} />
+          <Categories setViewCategory={this.setView} cartItemCount={this.state.cart.length} />
+          <Accessories addToCart={this.addToCart} cartTotal={this.getCartTotal} cartSummary={this.state.cart} backToCatalog={this.setView} />
         </div>
       );
     }
