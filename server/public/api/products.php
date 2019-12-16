@@ -17,11 +17,6 @@ if (!empty($_GET['id'])) {
   $whereClause = " WHERE p.`id` = $id";
 }
 
-// $category = false;
-// if (isset($bodyData['computers'])) {
-//   $category = " p.`category` = `computers`";
-// }
-
 $query = "SELECT p.`id`, p.`name`, p.`price`, p.`shortDescription`, p.`longDescription`, p.`specs`, p.`image` AS mainImage,
             GROUP_CONCAT(i.`url`) AS images
             FROM `products` AS p
