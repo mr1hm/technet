@@ -86,8 +86,8 @@ const ImageSlide = ({ setView, currentImageIndex, products, handleFeaturedItemCl
         <div onClick={handleFeaturedItemClick} className="col image-slide slideFeaturedDiv" style={styles}></div>
         <div className="col- image-slide-text image-slide-text-show">
           <div className="card cardDiv h-100">
-            <div className="card-body cardBody">
-              <h5 className="card-title">{products[currentImageIndex].name}</h5>
+            <div className="card-body carousel-cardBody">
+              <h5 className="card-title carousel-cardTitle">{products[currentImageIndex].name}</h5>
               <p className="productListItem-price">{`$${products[currentImageIndex].price}`}</p>
               <p className="card-text featured-longDescription">{products[currentImageIndex].longDescription}</p>
               <ul className="row carouselSpecs">
