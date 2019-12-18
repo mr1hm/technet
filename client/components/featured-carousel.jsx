@@ -83,17 +83,17 @@ const ImageSlide = ({ setView, currentImageIndex, products, handleFeaturedItemCl
   if (featuredItemClicked) {
     return (
       <>
-        <div onClick={handleFeaturedItemClick} className="col-sm image-slide slideFeaturedDiv" style={styles}></div>
-        <div className="col-sm image-slide-text image-slide-text-show">
+        <div onClick={handleFeaturedItemClick} className="col image-slide slideFeaturedDiv" style={styles}></div>
+        <div className="col- image-slide-text image-slide-text-show">
           <div className="card cardDiv h-100">
-            <div className="card-body">
+            <div className="card-body cardBody">
               <h5 className="card-title">{products[currentImageIndex].name}</h5>
               <p className="productListItem-price">{`$${products[currentImageIndex].price}`}</p>
               <p className="card-text featured-longDescription">{products[currentImageIndex].longDescription}</p>
               <ul className="row carouselSpecs">
                 {products[currentImageIndex].specs.map((spec, index) => {
                   return (
-                    <li key={index} className="col-sm-6">{`•${spec}`}</li>
+                    <li key={index} className="col-6">{`•${spec}`}</li>
                   );
                 })}
               </ul>
@@ -109,10 +109,10 @@ const ImageSlide = ({ setView, currentImageIndex, products, handleFeaturedItemCl
   }
   return (
     <>
-    <div onClick={handleFeaturedItemClick} className="col-sm image-slide" style={ styles }></div>
-    <div className="col-sm image-slide-text image-slide-text-hide">
+    <div onClick={handleFeaturedItemClick} className="col image-slide" style={ styles }></div>
+    <div className="col image-slide-text image-slide-text-hide">
       <div className="card cardDiv h-100">
-        <div className="card-body">
+        <div className="card-body cardBody">
           <h5 className="card-title">{products[currentImageIndex].name}</h5>
           <p className="productListItem-price">{`$${products[currentImageIndex].price}`}</p>
           <p className="card-text carouselDesc carouselDesc-show">{products[currentImageIndex].longDescription}</p>
