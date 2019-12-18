@@ -303,12 +303,12 @@ body {
     width: 45%;
   }
   .image-slide.slideFeaturedDiv {
-    left: 23%;
-    height: 71px;
-    width: 32%;
+    left: 30%;
+    height: 100px;
+    width: 45%;
   }
   .cardDiv {
-    overflow: hidden;
+    overflow: scroll;
   }
   .cardBody{
     overflow: hidden;
