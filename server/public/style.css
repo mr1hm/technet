@@ -228,6 +228,19 @@ body {
 -------------------------------------------------------------------*/
 
 @media (max-width:320px) {
+  .cardShortDesc {
+    font-size: 7px;
+  }
+  .productCardBody {
+    padding: 10px;
+  }
+  .productCardTitle {
+    margin-bottom: 5px;
+  }
+  .productListItem-price {
+    font-size: 8px;
+    margin-bottom: 5px;
+  }
   .slide-arrow {
     width: 35px;
     color: maroon;
