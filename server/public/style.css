@@ -259,14 +259,16 @@ body {
     font-size: 10px;
   }
   .cardImage {
-    width: 50px;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
   .productListItems {
     height: 100px;
     width: 150px;
   }
   .featured-carousel {
-    height: 200px;
+    height: 150px;
   }
   .carouselMain {
     height: 100px;
