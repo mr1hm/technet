@@ -15,12 +15,12 @@ export default class Categories extends React.Component {
         <div className="row">
           <div className="col-3 d-flex justify-content-center">
             <a onClick={() => this.props.setViewCategory('computers', {})} className="categoriesSections">
-              Custom Desktops
+              Desktops
             </a>
           </div>
           <div className="col-3 d-flex justify-content-center">
             <a className="categoriesSections" onClick={() => this.props.setViewCategory('hardware', {})}>
-              Computer Hardware
+              Hardware
             </a>
           </div>
           <div className="col-3 d-flex justify-content-center">

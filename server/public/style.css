@@ -228,6 +228,19 @@ body {
 -------------------------------------------------------------------*/
 
 @media (max-width:320px) {
+  .cardShortDesc {
+    font-size: 7px;
+  }
+  .productCardBody {
+    padding: 10px;
+  }
+  .productCardTitle {
+    margin-bottom: 5px;
+  }
+  .productListItem-price {
+    font-size: 8px;
+    margin-bottom: 5px;
+  }
   .slide-arrow {
     width: 35px;
     color: maroon;
@@ -246,14 +259,16 @@ body {
     font-size: 10px;
   }
   .cardImage {
-    width: 50px;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
   .productListItems {
     height: 100px;
     width: 150px;
   }
   .featured-carousel {
-    height: 200px;
+    height: 150px;
   }
   .carouselMain {
     height: 100px;
@@ -274,8 +289,8 @@ body {
     font-size: 10px;
     position: absolute;
     right: 25%;
-    width: 50%;
-    height: 71px;
+    width: 45%;
+    height: 100px;
     opacity: 1;
     /* overflow: scroll; */
     background-color: #D8C3A5;
@@ -288,12 +303,12 @@ body {
     width: 45%;
   }
   .image-slide.slideFeaturedDiv {
-    left: 23%;
-    height: 71px;
-    width: 32%;
+    left: 30%;
+    height: 100px;
+    width: 45%;
   }
   .cardDiv {
-    overflow: hidden;
+    overflow: scroll;
   }
   .cardBody{
     overflow: hidden;
