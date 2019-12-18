@@ -3,7 +3,7 @@ import React from 'react';
 export default class ProductListItem extends React.Component {
   render() {
     return (
-      <div className="col-3 productListItems">
+      <div className="col-xl-3 col-lg-4 col-12 productListItems">
         <div className="card cardDiv h-100">
           <img src={`${this.props.productMainImg}`} alt="image" className="cardImage card-img-top" />
           <div className="card-body">
