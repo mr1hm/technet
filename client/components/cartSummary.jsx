@@ -6,7 +6,7 @@ export default class CartSummary extends React.Component {
   render() {
     if (this.props.cartSummary.length === 0) {
       return (
-        <div className="offset-2 col-8">
+        <div className="offset-2 col-8 cartSummaryOffset">
           <button className="btn btn-warning backToListBtn mt-2 mb-2" onClick={() => this.props.clickHandler('catalog', {})}>Back To Catalog</button>
           <h1>{this.props.text}</h1>
         </div>
