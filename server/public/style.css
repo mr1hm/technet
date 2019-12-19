@@ -580,8 +580,11 @@ body {
     border: none;
   }
   .productListItems {
-    height: 100px;
-    width: 150px;
+    height: 100%;
+    width: 100%;
+  }
+  .productListItem-price {
+    font-size: 12px;
   }
   .featured-carousel {
     height: 150px;
