@@ -607,8 +607,9 @@ body {
   .image-slide-text.image-slide-text-show {
     font-size: 10px;
     position: absolute;
+    top: 22%;
     right: 25%;
-    width: 45%;
+    width: 38%;
     height: 100px;
     opacity: 1;
     /* overflow: scroll; */
