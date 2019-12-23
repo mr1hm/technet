@@ -25,10 +25,8 @@ export default class Header extends React.Component {
             <span className="cartBadge badge badge-light">{cartItemCount}</span>
           </button>
         </div>
-        <div className="col-12 header-subTitle">
+        <div className="col-12 d-flex align-items-center header-subTitle">
           {currentView === 'catalog' ? null : <a onClick={() => setViewCart('catalog', {})} href="#">Home</a>}
-        </div>
-        <div className="row align-items-center">
         </div>
       </div>
     );
