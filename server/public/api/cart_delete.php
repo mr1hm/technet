@@ -26,7 +26,9 @@ if (!empty($_SESSION['cartId'])) {
 $query = "DELETE FROM `cartItems` WHERE `cartItems`.`productID` = $id AND `cartItems`.`cartID` = $cartId";
 $result = mysqli_query($conn, $query);
 
-if (!$result) throw new Exception('delete query error ' . mysqli_error($conn));
+if (!$result) {
+  throw new Exception('delete query error ' . mysqli_error($conn));
+}
 
 print(json_encode($result));
 
