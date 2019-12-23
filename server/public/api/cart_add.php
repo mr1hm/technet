@@ -85,4 +85,6 @@ if (mysqli_affected_rows($conn) === 0) {
 
 $transactionResult = mysqli_query($conn, 'COMMIT');
 
+print(json_encode($cartItemsResult));
+
 ?>
