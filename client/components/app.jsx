@@ -77,9 +77,9 @@ export default class App extends React.Component {
       .then(productItem => {
         let cart = this.state.cart.slice();
         cart.push(productItem);
-        this.setState({ cart }, this.getCartItems);
+        this.setState({ cart });
       })
-      .catch(error => console.error(error.message));
+      .catch(error => console.error(error));
   }
 
   deleteFromCart(productID) {
@@ -97,7 +97,8 @@ export default class App extends React.Component {
         const itemIndex = cart.findIndex(item => item.id === productID);
         cart.splice(itemIndex, 1);
         this.setState({ cart });
-      });
+      })
+      .catch(error => console.error(error));
   }
 
   getCartItems() {
