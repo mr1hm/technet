@@ -18,7 +18,7 @@ if ($id <= 0) {
 
 if (!empty($_SESSION['cartId'])) {
   $cartId = $_SESSION['cartId'];
-  print('cartID' . $cartId);
+  // print('cartID' . $cartId);
 } else {
   $cartId = false;
 }
