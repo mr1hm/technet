@@ -21,6 +21,7 @@ export default class CartSummaryItem extends React.Component {
                 <p className="itemCount">{`QUANTITY: ${this.props.cartItemCount}`}</p>
                 <p className="cartItemPriceTag">{`$${productTotal}`}</p>
                 <p className="card-text">{this.props.cartItemInfo}</p>
+                <button className="btn btn-danger" onClick={() => this.props.deleteFromCart(this.props.cartItemID)}>Remove</button>
               </div>
             </div>
           </div>
