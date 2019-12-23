@@ -167,7 +167,7 @@ export default class App extends React.Component {
         <div className="container-fluid main">
           <Header currentView={this.state.view.name} text="Computer Hardware" setViewCart={this.setView} cartItemCount={this.state.cart.length} />
           <Categories setViewCategory={this.setView} cartItemCount={this.state.cart.length} />
-          <Hardware addToCart={this.addToCart} cartTotal={this.getCartTotal} cartSummary={this.state.cart} backToCatalog={this.setView} />
+          <Hardware setViewPass={this.setView} addToCart={this.addToCart} cartTotal={this.getCartTotal} cartSummary={this.state.cart} backToCatalog={this.setView} />
         </div>
       );
     } else if (this.state.view.name === 'misc') {
