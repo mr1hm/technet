@@ -16,6 +16,9 @@ switch($_SERVER['REQUEST_METHOD']) {
   case 'GET':
     require_once 'cart_get.php';
     break;
+  case 'DELETE':
+    require_once 'cart_delete.php';
+    break;
 }
 
 ?>
