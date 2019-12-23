@@ -13,16 +13,22 @@ export default class Header extends React.Component {
   }
 
   render() {
+    const { text, setViewCart, cartItemCount, currentView } = this.props;
     return (
       <div className="header row align-items-center">
         <div className="col-2 headerTitle">
-          {this.props.text}
+          {text}
         </div>
         <div className="col-10 shoppingCart d-flex justify-content-end">
-          <button className="btn btn-success" onClick={() => this.props.setViewCart('cart', {})}>
+          <button className="btn btn-success" onClick={() => setViewCart('cart', {})}>
             <i className="cartIcon fas fa-shopping-cart"></i>
-            <span className="cartBadge badge badge-light">{this.props.cartItemCount}</span>
+            <span className="cartBadge badge badge-light">{cartItemCount}</span>
           </button>
+        </div>
+        <div className="col-12 header-subTitle">
+          {currentView === 'catalog' ? null : <a onClick={() => setViewCart('catalog', {})} href="#">Home</a>}
+        </div>
+        <div className="row align-items-center">
         </div>
       </div>
     );
