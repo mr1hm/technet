@@ -1,6 +1,17 @@
 import React from 'react';
 
 export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cartItemCount: null
+    };
+  }
+  componentDidUpdate(prevProps) {
+    const { cartItemCount } = this.props;
+    if (prevProps.cartItemCount !== this.props.cartItemCount) this.setState({ cartItemCount });
+  }
+
   render() {
     return (
       <div className="header row align-items-center">
