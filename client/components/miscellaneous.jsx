@@ -38,7 +38,7 @@ export default class Misc extends React.Component {
             productInfo={product.shortDescription}
             productName={product.name}
             productPrice={product.price}
-            setViewPass={this.props.setView} />
+            setViewPass={this.props.setViewPass} />
         )}
       </div>
     );
