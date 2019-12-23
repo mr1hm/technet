@@ -30,6 +30,7 @@ export default class CartSummary extends React.Component {
                 cartItemPrice={cartItem.price}
                 cartItemCount={cartItem.count}
                 setView={this.props.clickHandler}
+                deleteFromCart={this.props.deleteFromCart}
               />
             )}
           </div>

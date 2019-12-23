@@ -26,6 +26,7 @@ export default class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.getCartTotal = this.getCartTotal.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.deleteFromCart = this.deleteFromCart.bind(this);
   }
 
   componentDidMount() {
@@ -76,12 +77,27 @@ export default class App extends React.Component {
       .then(productItem => {
         let cart = this.state.cart.slice();
         cart.push(productItem);
-        this.setState({
-          cart
-        });
+        this.setState({ cart }, this.getCartItems);
       })
       .catch(error => console.error(error.message));
-    this.getCartItems();
+  }
+
+  deleteFromCart(productID) {
+    const cart = this.state.cart.slice();
+    const myInit = {
+      method: 'DELETE',
+      body: JSON.stringify({ id: productID }),
+      header: {
+        'Content-Type': 'application/json'
+      }
+    };
+    fetch('/api/cart.php', myInit)
+      .then(response => response.json())
+      .then(cartItem => {
+        const itemIndex = cart.findIndex(item => item.id === productID);
+        cart.splice(itemIndex, 1);
+        this.setState({ cart });
+      });
   }
 
   getCartItems() {
@@ -124,7 +140,7 @@ export default class App extends React.Component {
       return (
         <div className="container-fluid main">
           <Header text="Cart Summary" setViewCart={this.setView} cartItemCount={this.state.cart.length} />
-          <CartSummary cartTotal={this.getCartTotal} cartSummary={this.state.cart} clickHandler={this.setView} />
+          <CartSummary deleteFromCart={this.deleteFromCart} cartTotal={this.getCartTotal} cartSummary={this.state.cart} clickHandler={this.setView} />
         </div>
       );
     } else if (this.state.view.name === 'checkout') {
