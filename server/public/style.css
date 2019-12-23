@@ -148,6 +148,16 @@ body {
   font-style: italic;
 }
 
+.header-subTitle {
+  font-family: 'Knewave', cursive;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(213, 243, 105, 0.637);
+  font-style: italic;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .categoriesContainer {
   border: 2px solid #D8C3A5;
   margin-top: 5px;
