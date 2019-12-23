@@ -97,7 +97,8 @@ export default class App extends React.Component {
         const itemIndex = cart.findIndex(item => item.id === productID);
         cart.splice(itemIndex, 1);
         this.setState({ cart });
-      });
+      })
+      .catch(error => console.error(error));
   }
 
   getCartItems() {
