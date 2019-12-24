@@ -12,9 +12,7 @@ class ProductDetails extends React.Component {
     fetch(`/api/products.php?id=${this.props.productId}`)
       .then(response => response.json())
       .then(product => {
-        this.setState({
-          product
-        });
+        this.setState({ product });
       })
       .catch(error => console.error(error));
   }
