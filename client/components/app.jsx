@@ -35,9 +35,17 @@ export default class App extends React.Component {
 
   getCartTotal() {
     let totalCost = 0;
+    let priceNoComma;
+    let price;
     for (let i = 0; i < this.state.cart.length; i++) {
-      let price = this.state.cart[i].price * this.state.cart[i].count;
-      totalCost += price;
+      if (this.state.cart[i].price.includes(',')) {
+        priceNoComma = this.state.cart[i].price.replace(/,/g, '');
+        price = parseFloat(priceNoComma) * parseInt(this.state.cart[i].count);
+        totalCost += price;
+      } else {
+        price = parseFloat(this.state.cart[i].price) * parseInt(this.state.cart[i].count);
+        totalCost += price;
+      }
     }
     return totalCost;
   }
