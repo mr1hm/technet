@@ -18,4 +18,4 @@ POST http://localhost:3000/api/products.php
 
 ###
 
-GET http://localhost:3000/api/cart_get.php
+GET http://localhost:3000/api/cart.php
