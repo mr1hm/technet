@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 20, 2019 at 10:56 PM
+-- Generation Time: Dec 24, 2019 at 02:03 AM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.1
 
@@ -37,8 +37,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `created`) VALUES
-(1, '2019-10-14 04:50:45'),
-(2, '2019-11-08 01:57:08');
+(1, '2019-12-23 20:37:15');
 
 -- --------------------------------------------------------
 
@@ -62,14 +61,9 @@ CREATE TABLE `cartItems` (
 --
 
 INSERT INTO `cartItems` (`id`, `productID`, `count`, `price`, `added`, `updated`, `cartID`) VALUES
-(1, 1, 2, 2999, '2019-10-14 04:50:45', '2019-10-14 04:54:39', 1),
-(2, 2, 1, 2595, '2019-10-14 04:53:17', '2019-10-14 04:53:17', 1),
-(4, 1, 2, 2999, '2019-10-14 05:01:43', '2019-10-14 05:01:50', 3),
-(5, 1, 1, 2999, '2019-11-08 01:57:08', '2019-11-08 01:57:08', 2),
-(6, 3, 2, 2900, '2019-11-08 02:13:34', '2019-11-08 02:14:24', 2),
-(7, 4, 1, 999, '2019-11-08 02:13:56', '2019-11-08 02:13:56', 2),
-(8, 2, 1, 2595, '2019-11-08 02:14:16', '2019-11-08 02:14:16', 2),
-(10, 5, 1, 9900, '2019-11-08 02:14:31', '2019-11-08 02:14:31', 2);
+(40, 8, 1, 355900, '2019-12-24 01:52:07', '2019-12-24 01:52:07', 1),
+(41, 11, 1, 7799, '2019-12-24 01:52:11', '2019-12-24 01:52:11', 1),
+(42, 12, 2, 10300, '2019-12-24 01:52:14', '2019-12-24 01:53:03', 1);
 
 -- --------------------------------------------------------
 
@@ -201,12 +195,12 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `cartItems`
 --
 ALTER TABLE `cartItems`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `images`
 --
