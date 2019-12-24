@@ -73,6 +73,7 @@ export default class App extends React.Component {
   }
 
   addToCart(product) {
+    product = { ...product, count: 1 };
     const myInit = {
       method: 'POST',
       body: JSON.stringify(product),
