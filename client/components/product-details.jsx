@@ -12,9 +12,7 @@ class ProductDetails extends React.Component {
     fetch(`/api/products.php?id=${this.props.productId}`)
       .then(response => response.json())
       .then(product => {
-        this.setState({
-          product
-        });
+        this.setState({ product });
       })
       .catch(error => console.error(error));
   }
@@ -56,7 +54,7 @@ class ProductDetails extends React.Component {
           </div>
           <div className="row productSpecs">
             <ul>
-              {product.specs.map((spec, index) => {
+              {!product.specs ? null : product.specs.map((spec, index) => {
                 return (
                   <li key={`spec${index}`}>{spec}</li>
                 );

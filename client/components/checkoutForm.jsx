@@ -30,7 +30,7 @@ export default class CheckoutForm extends React.Component {
   }
 
   render() {
-    let total = this.props.cartTotal();
+    let total = this.props.cartTotal().toFixed(2);
     return (
       <form>
         <div className="row">
