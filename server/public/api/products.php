@@ -56,6 +56,14 @@ if (isset($bodyData['accessories'])) {
           $whereClause AND p.`category` = 'accessories'
           GROUP BY p.`id`";
 }
+if (isset($bodyData['details'])) {
+  $query = "SELECT p.`id`, p.`name`, p.`price`, p.`shortDescription`, p.`longDescription`, p.`specs`, p.`image` AS mainImage,
+          GROUP_CONCAT(i.`url`) AS images
+          FROM `products` AS p
+          JOIN `images` AS i ON p.`id` = i.`productId`
+          $whereClause
+          GROUP BY p.`id`";
+}
 
 
 $result = mysqli_query($conn, $query);
