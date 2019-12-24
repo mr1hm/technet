@@ -14,7 +14,7 @@ export default class CartSummaryItem extends React.Component {
           <div className="card">
             <div className="card-horizontal">
               <div className="img-square-wrapper">
-                <img className="cartImageDiv" src={this.props.cartItemImage} alt="Card image cap"></img>
+                <img className="cartImageDiv" src={this.props.cartItemImage} alt="image"></img>
               </div>
               <div className="card-body">
                 <h4 className="card-title">{this.props.cartItemName}</h4>
