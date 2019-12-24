@@ -85,7 +85,8 @@ export default class App extends React.Component {
       .then(response => response.json())
       .then(productItem => {
         let cart = this.state.cart.slice();
-        cart.push(productItem);
+        const productIndex = cart.findIndex(item => item.id === productItem.id);
+        ~productIndex ? cart[productIndex].count = parseInt(cart[productIndex].count) + 1 : cart.push(productItem);
         this.setState({ cart });
       })
       .catch(error => console.error(error));
