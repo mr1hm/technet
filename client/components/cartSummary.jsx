@@ -36,7 +36,7 @@ export default class CartSummary extends React.Component {
           </div>
           <div className="row">
             <div className="total-price offset-2 col-8 d-flex justify-content-between mb-2">
-              TOTAL: {`${this.props.cartTotal().toFixed(2)}`}
+              TOTAL: {`$${this.props.cartTotal().toFixed(2)}`}
               <button className="btn btn-primary p-1" onClick={() => this.props.clickHandler('checkout', {})}>Checkout</button>
             </div>
           </div>

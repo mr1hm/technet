@@ -35,9 +35,17 @@ export default class App extends React.Component {
 
   getCartTotal() {
     let totalCost = 0;
+    let priceNoComma;
+    let price;
     for (let i = 0; i < this.state.cart.length; i++) {
-      let price = this.state.cart[i].price * this.state.cart[i].count;
-      totalCost += price;
+      if (this.state.cart[i].price.includes(',')) {
+        priceNoComma = this.state.cart[i].price.replace(/,/g, '');
+        price = parseFloat(priceNoComma) * parseInt(this.state.cart[i].count);
+        totalCost += price;
+      } else {
+        price = parseFloat(this.state.cart[i].price) * parseInt(this.state.cart[i].count);
+        totalCost += price;
+      }
     }
     return totalCost;
   }
@@ -65,6 +73,7 @@ export default class App extends React.Component {
   }
 
   addToCart(product) {
+    product = { ...product, count: 1 };
     const myInit = {
       method: 'POST',
       body: JSON.stringify(product),
@@ -76,7 +85,8 @@ export default class App extends React.Component {
       .then(response => response.json())
       .then(productItem => {
         let cart = this.state.cart.slice();
-        cart.push(productItem);
+        const productIndex = cart.findIndex(item => item.id === productItem.id);
+        ~productIndex ? cart[productIndex].count = parseInt(cart[productIndex].count) + 1 : cart.push(productItem);
         this.setState({ cart });
       })
       .catch(error => console.error(error));
