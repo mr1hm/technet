@@ -3,10 +3,14 @@ import React from 'react';
 export default class CartSummaryItem extends React.Component {
   render() {
     let productTotal = null;
-    if (this.props.cartItemCount > 1) {
-      productTotal = this.props.cartItemPrice * this.props.cartItemCount;
+    let priceNoComma = null;
+    if (this.props.cartItemCount > 1 || this.props.cartItemPrice.includes(',')) {
+      priceNoComma = this.props.cartItemPrice.replace(/,/g, '');
+      productTotal = parseFloat(priceNoComma) * parseInt(this.props.cartItemCount);
+      productTotal = productTotal.toFixed(2);
     } else {
-      productTotal = this.props.cartItemPrice;
+      productTotal = parseFloat(this.props.cartItemPrice);
+      productTotal = productTotal.toFixed(2);
     }
     return (
       <>
