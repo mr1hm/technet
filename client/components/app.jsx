@@ -183,7 +183,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'misc') {
       return (
         <div className="container-fluid main">
-          <Header currentView={this.state.view.name} text="Computer Hardware" setViewCart={this.setView} cartItemCount={this.state.cart.length} />
+          <Header currentView={this.state.view.name} text="Miscellaneous" setViewCart={this.setView} cartItemCount={this.state.cart.length} />
           <Categories setViewCategory={this.setView} cartItemCount={this.state.cart.length} />
           <Misc setViewPass={this.setView} addToCart={this.addToCart} cartTotal={this.getCartTotal} cartSummary={this.state.cart} backToCatalog={this.setView} />
         </div>
