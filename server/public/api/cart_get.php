@@ -11,7 +11,7 @@ if (empty($_SESSION['cartId'])) {
 
 $cartId = intval($_SESSION['cartId']);
 
-$query = "SELECT p.`id`, c.`count`, p.`name`, c.`price`, p.`shortDescription`,
+$query = "SELECT p.`id`, c.`count`, p.`name`, c.`price`, p.`shortDescription`, p.`image` AS mainImage,
             (SELECT `url`
             FROM `images` AS i
             WHERE p.`id` = i.`productId` LIMIT 1) AS images
