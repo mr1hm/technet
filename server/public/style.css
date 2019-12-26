@@ -183,6 +183,10 @@ body {
   border: 1px solid rgba(213, 243, 105, 0.637);
 }
 
+.detailsIcon {
+  line-height: 1.5;
+}
+
 .main {
   background-color: #EAE7DC;
 }
