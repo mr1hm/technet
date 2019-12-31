@@ -97,7 +97,7 @@ const ImageSlide = ({ setView, currentImageIndex, products, handleFeaturedItemCl
                   );
                 })}
               </ul>
-              <button className="btn productDetailsBtn" onClick={() => setView('details', { id: products[currentImageIndex].id })}>
+              <button className="btn productDetailsBtn" onClick={() => setView('details', { id: products[currentImageIndex].id, category: products[currentImageIndex].category })}>
                   Product Details
                 <i className="fas fa-info-circle ml-1"></i>
               </button>
