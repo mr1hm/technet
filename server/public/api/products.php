@@ -6,18 +6,6 @@ require_once 'db_connection.php';
 startUp();
 $bodyData = getBodyData();
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($bodyData['id'])) {
-//   $productID = intval($bodyData['id']);
-//   $query = "SELECT * FROM `products` WHERE `products`.`id` = $productID";
-//   $result = mysqli_query($conn, $query);
-
-//   $data = [];
-//   while ($row = mysqli_fetch_assoc($result)) {
-//     $data[] = $row;
-//   }
-
-//   print(json_encode($data[0]));
-// }
 
 $whereClause = '';
 $id = false;
