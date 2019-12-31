@@ -22,9 +22,7 @@ export default class ProductList extends React.Component {
   }
 
   getFeaturedProducts() {
-    const body = { featured: 1 };
-    const init = { method: 'POST', body: JSON.stringify(body) };
-    fetch('api/products.php', init)
+    fetch(`api/products.php?filter=featured`)
       .then(res => res.json())
       .then(products => {
         this.setState({
