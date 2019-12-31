@@ -73,6 +73,7 @@ export default class App extends React.Component {
   }
 
   addToCart(product) {
+    delete product.category;
     product = { ...product, count: 1 };
     const myInit = {
       method: 'POST',
