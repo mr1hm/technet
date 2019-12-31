@@ -22,7 +22,7 @@ export default class ProductList extends React.Component {
   }
 
   getFeaturedProducts() {
-    fetch(`api/products.php?filter=featured`)
+    fetch(`/api/products.php?filter=featured`)
       .then(res => res.json())
       .then(products => {
         this.setState({
