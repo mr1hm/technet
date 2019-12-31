@@ -51,7 +51,8 @@ export default class ProductList extends React.Component {
               productInfo={product.shortDescription}
               productName={product.name}
               productPrice={product.price}
-              setViewPass={this.props.setView} />
+              setViewPass={this.props.setView}
+              category={product.category} />
           )}
         </div>
       </div>
