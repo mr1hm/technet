@@ -14,9 +14,9 @@ export default class Accessories extends React.Component {
   }
 
   getAccessories() {
-    const body = { accessories: 1 };
-    const init = { method: 'POST', body: JSON.stringify(body) };
-    fetch('/api/products.php', init)
+    // const body = { accessories: 1 };
+    // const init = { method: 'POST', body: JSON.stringify(body) };
+    fetch(`/api/products.php?filter=accessories`)
       .then(r => r.json())
       .then(accessories => {
         this.setState({ accessories });
