@@ -14,9 +14,7 @@ export default class Misc extends React.Component {
   }
 
   getMiscProducts() {
-    const body = { misc: 1 };
-    const init = { method: 'POST', body: JSON.stringify(body) };
-    fetch(`/api/products.php`, init)
+    fetch(`/api/products.php?filter=misc`)
       .then(response => response.json())
       .then(misc => {
         this.setState({ misc });
