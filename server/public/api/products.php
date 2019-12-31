@@ -70,7 +70,7 @@ if (!$result) {
 $output = [];
 
 if (mysqli_num_rows($result) === 0 && $id !== false) {
-  throw new Exception("error id: $id");
+  throw new Exception("error id: $id\nquery: $query");
 } else {
   while ($row = mysqli_fetch_assoc($result)) {
     $row['id'] = intval($row['id']);
