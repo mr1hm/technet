@@ -14,9 +14,7 @@ export default class GamingComputers extends React.Component {
   }
 
   getComputerProducts() {
-    const body = { computers: 1 };
-    const init = { method: 'POST', body: JSON.stringify(body) };
-    fetch(`/api/products.php`, init)
+    fetch(`/api/products.php?filter=computers`)
       .then(response => response.json())
       .then(computers => {
         this.setState({
@@ -42,7 +40,8 @@ export default class GamingComputers extends React.Component {
             productInfo={product.shortDescription}
             productName={product.name}
             productPrice={product.price}
-            setViewPass={this.props.setViewPass} />
+            setViewPass={this.props.setViewPass}
+            category={product.category} />
         )}
       </div>
     );

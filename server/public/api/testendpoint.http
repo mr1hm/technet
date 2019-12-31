@@ -1,4 +1,4 @@
-GET http://localhost:3000/api/products.php
+GET http://localhost:3000/api/products.php?filter=featured
 
 ###
 
@@ -19,3 +19,7 @@ POST http://localhost:3000/api/products.php
 ###
 
 GET http://localhost:3000/api/cart.php
+
+###
+
+GET http://localhost:3000/api/products.php?id=1&filter=misc
