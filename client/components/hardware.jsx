@@ -14,14 +14,10 @@ export default class Hardware extends React.Component {
   }
 
   getHardwareProducts() {
-    const body = { hardware: 1 };
-    const init = { method: 'POST', body: JSON.stringify(body) };
-    fetch(`/api/products.php`, init)
+    fetch(`/api/products.php?filter=hardware`)
       .then(response => response.json())
       .then(hardware => {
-        this.setState({
-          hardware
-        });
+        this.setState({ hardware });
       })
       .catch(error => console.error(error));
   }
