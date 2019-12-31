@@ -8,7 +8,7 @@ export default class ProductListItem extends React.Component {
           <div className="row no-gutters">
             <div className="col-4 h-100">
               <img src={`${this.props.productMainImg}`} alt="image" className="cardImage card-img-top" />
-              <button className="btn productDetailsBtn w-100 d-flex justify-content-center" onClick={() => this.props.setViewPass('details', { id: this.props.productId })}>
+              <button className="btn productDetailsBtn w-100 d-flex justify-content-center" onClick={() => this.props.setViewPass('details', { id: this.props.productId, category: this.props.category })}>
                   Product Details
                 <i className="fas fa-info-circle ml-1 detailsIcon"></i>
               </button>
