@@ -17,7 +17,7 @@ export default class Header extends React.Component {
     return (
       <div className="header row align-items-center">
         <div className="col-2 headerTitle">
-          {text}
+          <a className="headerTitle" onClick={() => setViewCart('catalog', {})} href="#">{text}</a>
         </div>
         <div className="col-10 shoppingCart d-flex justify-content-end">
           <button className="btn btn-success" onClick={() => setViewCart('cart', {})}>
