@@ -148,6 +148,10 @@ body {
   font-style: italic;
 }
 
+.headerTitle:hover {
+  color: rgba(213, 243, 105, 0.637);
+}
+
 .header-subTitle {
   font-family: 'Knewave', cursive;
   font-size: 18px;
