@@ -239,6 +239,41 @@ body {
   background-color: #D8C3A5;
 }
 
+.confirmation-modal {
+  border: 2px solid #E85A4F;
+  border-radius: 5px;
+  width: 310px;
+  height: 200px;
+  position: absolute;
+  left: 78%;
+  top: 10%;
+  background-color: #D8C3A5;
+}
+
+/* .confirmation-modal.ease {
+  opacity: 0.8;
+} */
+
+@keyframes modalFadeOut {
+  from {transform: translateY(0); opacity: 1;}
+  to {transform: translateY(50%); opacity: 0;}
+}
+
+.confirmation-modal {
+  -webkit-animation: modalFadeOut 500ms ease-in-out 0.5s both;
+  animation: modalFadeOut 500ms ease-in-out 0.5s both;
+}
+
+@keyframes modalFadeIn {
+  from {transform: translateY(-50%);opacity: 0;}
+  to {transform: translateY(0);opacity: 1;}
+}
+
+.confirmation-modal.fadeIn {
+  -webkit-animation: modalFadeIn ease-in-out 0.5s both;
+  animation: modalFadeIn ease-in-out 0.5s both;
+}
+
 /*-------------------------------------------------------------------
 
                         10. RESPONSIVE
