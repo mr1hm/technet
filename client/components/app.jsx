@@ -140,7 +140,7 @@ export default class App extends React.Component {
       return (
         <div className="container-fluid main">
           <Header currentView={this.state.view.name} text="techNet" setViewCart={this.setView} cartItemCount={this.state.cart.length} />
-          <ProductDetails getCartItems={this.getCartItems} setView={this.setView} productId={this.state.view.params.id} category={this.state.view.params.category} addToCart={this.addToCart} />
+          <ProductDetails cart={this.state.cart} getCartItems={this.getCartItems} setView={this.setView} productId={this.state.view.params.id} category={this.state.view.params.category} addToCart={this.addToCart} />
         </div>
       );
     } else if (this.state.view.name === 'cart') {
