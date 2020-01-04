@@ -1,11 +1,18 @@
 import React from 'react';
+import ConfirmationModal from './confirmation-modal';
 
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
+      productAdded: false
     };
+    this.handleAddProductClick = this.handleAddProductClick.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.productAdded) setTimeout(() => { this.setState({ productAdded: false }); }, 3000);
   }
 
   componentDidMount() {
@@ -17,14 +24,22 @@ class ProductDetails extends React.Component {
       .catch(error => console.error(error));
   }
 
+  handleAddProductClick() {
+    const { product, productAdded } = this.state;
+    this.setState({ productAdded: !productAdded });
+    if (product) this.props.addToCart(this.state.product);
+  }
+
   render() {
-    const { product } = this.state;
+    const { product, productAdded } = this.state;
     if (this.state.product === null) {
       return (
         <h1>LOADING</h1>
       );
     }
     return (
+      <>
+      {this.state.productAdded ? <ConfirmationModal cart={this.props.cart} productAdded={productAdded} product={product} /> : null}
       <div className="container detailsMain">
         <article className="row single-post mt-5 no-gutters">
           <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -39,7 +54,7 @@ class ProductDetails extends React.Component {
             <div className="priceTag">
               {`$${this.state.product.price}`}
             </div>
-            <button className="btn btn-success details-addToCartBtn" onClick={() => this.props.addToCart(this.state.product)}>Add To Cart</button>
+            <button className="btn btn-success details-addToCartBtn" onClick={this.handleAddProductClick}>Add To Cart</button>
             <br /><br />
             <br />
             <div className="shortDescription">
@@ -63,6 +78,7 @@ class ProductDetails extends React.Component {
           </div>
         </article>
       </div>
+      </>
     );
   }
 }
