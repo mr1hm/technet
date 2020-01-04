@@ -34,20 +34,16 @@ export default class App extends React.Component {
   }
 
   getCartTotal() {
-    let totalCost = 0;
-    let priceNoComma;
-    let price;
-    for (let i = 0; i < this.state.cart.length; i++) {
-      if (this.state.cart[i].price.includes(',')) {
-        priceNoComma = this.state.cart[i].price.replace(/,/g, '');
-        price = parseFloat(priceNoComma) * parseInt(this.state.cart[i].count);
-        totalCost += price;
+    return this.state.cart.reduce((acc, val) => {
+      if (val.price.includes(',')) {
+        let priceNoComma = val.price.replace(/,/g, '');
+        let price = parseFloat(priceNoComma) * parseInt(val.count);
+        return acc + price;
       } else {
-        price = parseFloat(this.state.cart[i].price) * parseInt(this.state.cart[i].count);
-        totalCost += price;
+        let price = parseFloat(val.price) * parseInt(val.count);
+        return acc + price;
       }
-    }
-    return totalCost;
+    }, 0);
   }
 
   placeOrder(userInfo) {
