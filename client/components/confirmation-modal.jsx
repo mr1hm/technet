@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default class ConfirmationModal extends React.Component {
-  // eslint-disable-line no-unused-vars
   constructor(props) {
     super(props);
     this.state = {
