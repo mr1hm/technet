@@ -16,7 +16,7 @@ export default class ConfirmationModal extends React.Component {
         <div className="container confirmation-modal fadeOut">
           <div className="row">
             <div className="col mt-1">
-              <h4>{product.name}</h4>
+              <h5>{product.name}</h5>
             </div>
           </div>
           <div className="row">
