@@ -16,6 +16,7 @@ export default class App extends React.Component {
     this.state = {
       cart: [],
       cartTotal: null,
+      deleteItem: false,
       view: {
         name: 'catalog',
         params: {}
