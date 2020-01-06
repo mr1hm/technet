@@ -27,7 +27,7 @@ export default class CartSummaryItem extends React.Component {
     }
     return (
       <>
-        {this.state.deleteItem ? <ConfirmationModal deleteItem={this.state.deleteItem} product={this.props.product} handleDeleteItem={this.handleDeleteItem} cartProduct={this.props.product} deleteFromCart={this.props.deleteFromCart} productID={this.props.cartItemID} /> : null}
+        {this.state.deleteItem ? <ConfirmationModal deleteItem={this.state.deleteItem} product={this.props.product} handleDeleteItem={this.handleDeleteItemClick} cartProduct={this.props.product} deleteFromCart={this.props.deleteFromCart} productID={this.props.cartItemID} /> : null}
         <div className="offset-2 col-8 mb-3">
           <div className="card cartCard">
             <div className="card-horizontal">
