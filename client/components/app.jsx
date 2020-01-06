@@ -31,10 +31,15 @@ export default class App extends React.Component {
     this.getCartItems = this.getCartItems.bind(this);
     this.handleCartIncrementClick = this.handleCartIncrementClick.bind(this);
     this.handleCartDecrementClick = this.handleCartDecrementClick.bind(this);
+    this.handleDeleteItemClick = this.handleDeleteItemClick.bind(this);
   }
 
   componentDidMount() {
     this.getCartItems();
+  }
+
+  handleDeleteItemClick() {
+    this.setState({ deleteItem: !this.state.deleteItem });
   }
 
   handleCartIncrementClick(id) {
