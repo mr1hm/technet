@@ -19,7 +19,6 @@ export default class CartSummary extends React.Component {
             <button className="btn btn-warning backToListBtn mt-2 mb-2" onClick={() => this.props.clickHandler('catalog', {})}>Back To Catalog</button>
           </div>
         </div>
-          <div className="cartList row">
             {this.props.cartSummary.map(cartItem =>
               <CartSummaryItem
                 product={cartItem}
@@ -39,7 +38,6 @@ export default class CartSummary extends React.Component {
                 deleteItem={this.props.deleteItem}
               />
             )}
-          </div>
           <div className="row">
             <div className="total-price offset-2 col-8 d-flex justify-content-between mb-2">
               TOTAL: {`$${this.props.cartTotal().toFixed(2)}`}
