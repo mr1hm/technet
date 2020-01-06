@@ -86,4 +86,18 @@ $transactionResult = mysqli_query($conn, 'COMMIT');
 
 print(json_encode($bodyData));
 
+if (isset($bodyData['quantity'])) {
+  $count = $bodyData['quantity'];
+  $countID = $bodyData['id'];
+
+  $query = "UPDATE `cartItems`
+            SET `count` = $count
+            WHERE `productID` = $countID";
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    throw new Exception('error in quantity update from cart summary ' . mysqli_error($conn));
+  }
+}
+
 ?>

@@ -27,27 +27,58 @@ export default class App extends React.Component {
     this.getCartTotal = this.getCartTotal.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.deleteFromCart = this.deleteFromCart.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
+    this.handleCartIncrementClick = this.handleCartIncrementClick.bind(this);
+    this.handleCartDecrementClick = this.handleCartDecrementClick.bind(this);
   }
 
   componentDidMount() {
     this.getCartItems();
   }
 
+  handleCartIncrementClick(id) {
+    let cart = this.state.cart.slice();
+    const findIndex = cart.findIndex(item => item.id === id);
+    if (~findIndex) cart[findIndex].count = parseInt(cart[findIndex].count) + 1;
+    const init = {
+      method: 'POST',
+      body: JSON.stringify({ id: cart[findIndex].id, quantity: cart[findIndex].count })
+    };
+    fetch(`/api/cart.php`, init)
+      .then(res => res.json())
+      .then(quantity => {
+        this.setState({ cart });
+      })
+      .catch(err => console.error(err));
+  }
+
+  handleCartDecrementClick(id) {
+    let cart = this.state.cart.slice();
+    const findIndex = cart.findIndex(item => item.id === id);
+    if (~findIndex) cart[findIndex].count = parseInt(cart[findIndex].count) - 1;
+    const init = {
+      method: 'POST',
+      body: JSON.stringify({ id: cart[findIndex].id, quantity: cart[findIndex].count })
+    };
+    fetch(`/api/cart.php`, init)
+      .then(res => res.json())
+      .then(quantity => {
+        this.setState({ cart });
+      })
+      .catch(err => console.error(err));
+  }
+
   getCartTotal() {
-    let totalCost = 0;
-    let priceNoComma;
-    let price;
-    for (let i = 0; i < this.state.cart.length; i++) {
-      if (this.state.cart[i].price.includes(',')) {
-        priceNoComma = this.state.cart[i].price.replace(/,/g, '');
-        price = parseFloat(priceNoComma) * parseInt(this.state.cart[i].count);
-        totalCost += price;
+    return this.state.cart.reduce((acc, val) => {
+      if (val.price.includes(',')) {
+        let priceNoComma = val.price.replace(/,/g, '');
+        let price = parseFloat(priceNoComma) * parseInt(val.count);
+        return acc + price;
       } else {
-        price = parseFloat(this.state.cart[i].price) * parseInt(this.state.cart[i].count);
-        totalCost += price;
+        let price = parseFloat(val.price) * parseInt(val.count);
+        return acc + price;
       }
-    }
-    return totalCost;
+    }, 0);
   }
 
   placeOrder(userInfo) {
@@ -155,7 +186,7 @@ export default class App extends React.Component {
       return (
         <div className="container-fluid main">
           <Header currentView={this.state.view.name} text="Cart Summary" setViewCart={this.setView} cartItemCount={this.state.cart.length} />
-          <CartSummary deleteFromCart={this.deleteFromCart} cartTotal={this.getCartTotal} cartSummary={this.state.cart} clickHandler={this.setView} />
+          <CartSummary handleIncrement={this.handleCartIncrementClick} handleDecrement={this.handleCartDecrementClick} getCartItems={this.getCartItems} deleteFromCart={this.deleteFromCart} cartTotal={this.getCartTotal} cartSummary={this.state.cart} clickHandler={this.setView} />
         </div>
       );
     } else if (this.state.view.name === 'checkout') {
