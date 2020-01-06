@@ -22,7 +22,7 @@ export default class CartSummaryItem extends React.Component {
     return (
       <>
         <div className="offset-2 col-8 mb-3">
-          <div className="card">
+          <div className="card cartCard">
             <div className="card-horizontal">
               <div className="img-square-wrapper">
                 <img className="cartImageDiv" src={this.props.cartItemImage} alt="image"></img>
