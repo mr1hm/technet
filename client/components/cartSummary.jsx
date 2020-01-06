@@ -22,6 +22,7 @@ export default class CartSummary extends React.Component {
           <div className="cartList row">
             {this.props.cartSummary.map(cartItem =>
               <CartSummaryItem
+                product={cartItem}
                 key={cartItem.id}
                 cartItemID={cartItem.id}
                 cartItemImage={cartItem.mainImage}
