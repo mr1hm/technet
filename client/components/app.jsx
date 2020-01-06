@@ -27,10 +27,45 @@ export default class App extends React.Component {
     this.getCartTotal = this.getCartTotal.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.deleteFromCart = this.deleteFromCart.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
+    this.handleCartIncrementClick = this.handleCartIncrementClick.bind(this);
+    this.handleCartDecrementClick = this.handleCartDecrementClick.bind(this);
   }
 
   componentDidMount() {
     this.getCartItems();
+  }
+
+  handleCartIncrementClick(id) {
+    let cart = this.state.cart.slice();
+    const findIndex = cart.findIndex(item => item.id === id);
+    if (~findIndex) cart[findIndex].count = parseInt(cart[findIndex].count) + 1;
+    const init = {
+      method: 'POST',
+      body: JSON.stringify({ id: cart[findIndex].id, quantity: cart[findIndex].count })
+    };
+    fetch(`/api/cart.php`, init)
+      .then(res => res.json())
+      .then(quantity => {
+        this.setState({ cart });
+      })
+      .catch(err => console.error(err));
+  }
+
+  handleCartDecrementClick(id) {
+    let cart = this.state.cart.slice();
+    const findIndex = cart.findIndex(item => item.id === id);
+    if (~findIndex) cart[findIndex].count = parseInt(cart[findIndex].count) - 1;
+    const init = {
+      method: 'POST',
+      body: JSON.stringify({ id: cart[findIndex].id, quantity: cart[findIndex].count })
+    };
+    fetch(`/api/cart.php`, init)
+      .then(res => res.json())
+      .then(quantity => {
+        this.setState({ cart });
+      })
+      .catch(err => console.error(err));
   }
 
   getCartTotal() {
