@@ -302,6 +302,12 @@ body {
   outline: 0;
 }
 
+.delete-confirmation-modal {
+  border: 2px solid whitesmoke;
+  width: 700px;
+  height: 25vh;
+}
+
 /*-------------------------------------------------------------------
 
                         10. RESPONSIVE
