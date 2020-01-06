@@ -130,9 +130,14 @@ body {
   object-fit: cover;
 }
 
+.img-square-wrapper {
+  min-width: 30%;
+}
+
 .cartCard {
   width: 100%;
   height: auto;
+  border: 2px solid maroon;
 }
 
 .header {
