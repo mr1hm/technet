@@ -1,4 +1,5 @@
 import React from 'react';
+import ConfirmationModal from './confirmation-modal';
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -9,19 +10,15 @@ export default class CheckoutForm extends React.Component {
       userAddress: '',
       cardValidated: true,
       nameValidated: true,
-      addressValidated: true
+      addressValidated: true,
+      checkout: false
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleOrder = this.handleOrder.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSubmit() {
-    const userInfo = {
-      userName: this.state.userName,
-      cardNumber: parseInt(this.state.cardNumber),
-      userAddress: this.state.userAddress
-    };
-    this.props.placeOrder(userInfo);
+  handleOrder() {
+    this.setState({ checkout: !this.state.checkout });
   }
 
   handleChange(event) {
@@ -51,10 +48,11 @@ export default class CheckoutForm extends React.Component {
   }
 
   render() {
-    const { nameValidated, cardValidated, addressValidated } = this.state;
+    const { checkout, nameValidated, cardValidated, addressValidated } = this.state;
     let total = this.props.cartTotal().toFixed(2);
     return (
       <form>
+        {checkout ? <ConfirmationModal handleOrder={this.handleOrder} backToCatalog={this.props.backToCatalog} placeOrder={this.props.placeOrder} checkout={checkout} /> : null}
         <div className="row">
           <div className='col-12 order-total'>
             Order Total: {`$${total}`}
@@ -87,7 +85,7 @@ export default class CheckoutForm extends React.Component {
         <div className="row">
           <div className="offset-2 col-8 d-flex justify-content-between">
             <button className="btn btn-warning backToListBtn mb-2" onClick={() => this.props.backToCatalog('catalog', {})}>Continue Shopping</button>
-            {!nameValidated || !cardValidated || !addressValidated ? <button className="btn btn-danger mb-2"><i className="fas fa-exclamation-circle"></i></button> : <button onClick={this.handleSubmit} type="submit" className="btn btn-success mb-2">Place Order</button>}
+            {!nameValidated || !cardValidated || !addressValidated ? <button className="btn btn-danger mb-2"><i className="fas fa-exclamation-circle"></i></button> : <button onClick={this.handleOrder} type="button" className="btn btn-success mb-2">Place Order</button>}
           </div>
         </div>
       </form>
