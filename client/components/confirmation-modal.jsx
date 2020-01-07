@@ -8,8 +8,46 @@ export default class ConfirmationModal extends React.Component {
     };
   }
 
+  handleSubmit() {
+    const userInfo = {
+      userName: this.state.userName,
+      cardNumber: parseInt(this.state.cardNumber),
+      userAddress: this.state.userAddress
+    };
+    this.props.placeOrder(userInfo);
+  }
+
   render() {
-    const { deleteFromCart, handleDeleteItem, cartProduct, product, productAdded, cart, deleteItem } = this.props;
+    const { handleOrder, checkout, backToCatalog, deleteFromCart, handleDeleteItem, cartProduct, product, productAdded, cart, deleteItem } = this.props;
+    if (checkout) {
+      return (
+        <div className="container mt-3 mb-3 checkout-confirmation-modal">
+          <div className="row">
+            <div className="col mt-1">
+              <h4 style={{ fontStyle: 'italic', letterSpacing: '0.5px' }}>Thank you for using this demo!</h4>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <p>
+                This website was created with the intent of demonstrating an example e-commerce website. It&#39;s in no way affiliated with any other e-commerce websites
+                that may use a similar or same name.
+                <br/><br/>
+                Please click confirm to be redirected to the home page or click cancel to maintain the items in your cart and stay on this page.
+              </p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col mt-2">
+              <button onClick={() => backToCatalog('catalog', {})} className="btn btn-success">Confirm</button>
+            </div>
+            <div className="col mt-2 d-flex justify-content-end">
+              <button onClick={handleOrder} className="btn btn-info">Cancel</button>
+            </div>
+          </div>
+        </div>
+      );
+    }
     if (deleteItem) {
       return (
         <div className="container mt-3 mb-3 delete-confirmation-modal">
