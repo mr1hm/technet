@@ -9,7 +9,8 @@ export default class CheckoutForm extends React.Component {
       userAddress: '',
       cardValidated: true,
       nameValidated: true,
-      addressValidated: true
+      addressValidated: true,
+      checkout: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
