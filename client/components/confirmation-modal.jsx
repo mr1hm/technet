@@ -19,16 +19,19 @@ export default class ConfirmationModal extends React.Component {
         <div className="container mt-3 mb-3 checkout-confirmation-modal">
           <div className="row">
             <div className="col mt-1">
-              <h4 style={{ fontStyle: 'italic', letterSpacing: '0.5px' }}>Thank you for using this demo!</h4>
+              <h4 className="checkout-font" style={{ fontStyle: 'italic', letterSpacing: '0.5px' }}>THANK YOU FOR USING THIS DEMO!</h4>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <p>
+              <p className="checkout-font">
                 This website was created with the intent of demonstrating an example e-commerce website. It&#39;s in no way affiliated with any other e-commerce websites
                 that may use a similar or same name.
                 <br/><br/>
-                Please click confirm to place your order and be redirected to the home page, or click cancel to maintain the items in your cart and stay on this page.
+                Please click <span style={{ fontWeight: 600, textDecoration: 'underline' }}>confirm</span> to &quot;place&quot; your order and be redirected to the home page, or
+                click <span style={{ fontWeight: 600, textDecoration: 'underline' }}>cancel</span> to maintain the items in your cart and stay on this page.
+                <br/><br/>
+                Your information will not be saved and there will be no charge whatsoever to any credit card number that you inputted into the Card Information field.
               </p>
             </div>
           </div>
