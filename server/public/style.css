@@ -317,7 +317,11 @@ body {
   border: 2px solid maroon;
   border-radius: 5px;
   width: 700px;
-  height: 26vh;
+  height: 37vh;
+}
+
+.checkout-font {
+  font-family: 'Poppins', sans-serif;
 }
 
 /*-------------------------------------------------------------------
