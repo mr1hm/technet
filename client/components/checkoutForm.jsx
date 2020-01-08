@@ -5,12 +5,20 @@ export default class CheckoutForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: '',
-      cardNumber: null,
-      userAddress: '',
-      cardValidated: true,
-      nameValidated: true,
-      addressValidated: true,
+      userInfo: {
+        userName: '',
+        cardNumber: null,
+        userAddress: '',
+        userCity: '',
+        userState: '',
+        userZip: ''
+      },
+      cardValidated: false,
+      nameValidated: false,
+      addressValidated: false,
+      cityValidated: false,
+      stateValidated: false,
+      zipValidated: false,
       checkout: false
     };
     this.handleOrder = this.handleOrder.bind(this);
