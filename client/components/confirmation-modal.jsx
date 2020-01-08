@@ -8,17 +8,12 @@ export default class ConfirmationModal extends React.Component {
     };
   }
 
-  handleSubmit() {
-    const userInfo = {
-      userName: this.state.userName,
-      cardNumber: parseInt(this.state.cardNumber),
-      userAddress: this.state.userAddress
-    };
+  handleSubmit(userInfo) {
     this.props.placeOrder(userInfo);
   }
 
   render() {
-    const { handleOrder, checkout, backToCatalog, deleteFromCart, handleDeleteItem, cartProduct, product, productAdded, cart, deleteItem } = this.props;
+    const { userInfo, handleOrder, checkout, deleteFromCart, handleDeleteItem, cartProduct, product, productAdded, cart, deleteItem } = this.props;
     if (checkout) {
       return (
         <div className="container mt-3 mb-3 checkout-confirmation-modal">
@@ -33,13 +28,13 @@ export default class ConfirmationModal extends React.Component {
                 This website was created with the intent of demonstrating an example e-commerce website. It&#39;s in no way affiliated with any other e-commerce websites
                 that may use a similar or same name.
                 <br/><br/>
-                Please click confirm to be redirected to the home page or click cancel to maintain the items in your cart and stay on this page.
+                Please click confirm to place your order and be redirected to the home page, or click cancel to maintain the items in your cart and stay on this page.
               </p>
             </div>
           </div>
           <div className="row">
             <div className="col mt-2">
-              <button onClick={() => backToCatalog('catalog', {})} className="btn btn-success">Confirm</button>
+              <button onClick={() => this.handleSubmit(userInfo)} className="btn btn-success">Confirm</button>
             </div>
             <div className="col mt-2 d-flex justify-content-end">
               <button onClick={handleOrder} className="btn btn-info">Cancel</button>
