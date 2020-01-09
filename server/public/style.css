@@ -274,10 +274,6 @@ body {
   background-color: #D8C3A5;
 }
 
-/* .confirmation-modal.ease {
-  opacity: 0.8;
-} */
-
 @keyframes modalFadeOut {
   from {transform: translateY(0); opacity: 1;}
   to {transform: translateY(50%); opacity: 0;}
