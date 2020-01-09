@@ -16,7 +16,7 @@ export default class ConfirmationModal extends React.Component {
     const { userInfo, handleOrder, checkout, deleteFromCart, handleDeleteItem, cartProduct, product, productAdded, cart, deleteItem } = this.props;
     if (checkout) {
       return (
-        <div className="container mt-3 mb-3 checkout-confirmation-modal">
+        <div className="container mb-3 checkout-confirmation-modal">
           <div className="row">
             <div className="col mt-1">
               <h4 className="checkout-font" style={{ fontStyle: 'italic', letterSpacing: '0.5px' }}>THANK YOU FOR USING THIS DEMO!</h4>
