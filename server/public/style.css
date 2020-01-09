@@ -164,7 +164,11 @@ body {
 
 .header-container:hover .header,
 .header-container:focus .header {
-  transform: scale(1.04) rotate(0.25deg);
+  transform: scale(1.05);
+}
+
+.shoppingCart {
+  margin-left: 40px;
 }
 
 .headerTitle {
