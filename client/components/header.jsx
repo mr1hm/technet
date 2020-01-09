@@ -24,10 +24,10 @@ export default class Header extends React.Component {
     return (
       <div className="container-fluid header-container">
         <div onClick={() => setViewCart('catalog', {})} className="header row align-items-center">
-          <div className="col-2 headerTitle">
+          <div className="col-2 ml-5 headerTitle">
             {text}
           </div>
-          <div className="col-10 shoppingCart d-flex justify-content-end">
+          <div className="col-9 shoppingCart d-flex justify-content-end">
             <button className="btn btn-success cartBtn" onClick={e => this.stopPropagation(e)}>
               <i className="cartIcon fas fa-shopping-cart"></i>
               <span className="cartBadge badge badge-light">{cartItemCount}</span>
