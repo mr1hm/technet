@@ -204,10 +204,14 @@ body {
   margin-bottom: 5px;
 }
 
+.productCardTitle {
+  text-transform: uppercase;
+}
+
 .categoriesSections {
-  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
-  font-weight: 700;
+  /* font-weight: 700; */
   color: rgba(213, 243, 105, 0.637)!important;
   cursor: pointer;
 }
@@ -611,7 +615,7 @@ body {
     font-size: 10px;
   }
   .categoriesSections {
-  /* font-family: 'Open Sans', sans-serif; */
+  /* font-family: 'Poppins', sans-serif; */
   font-size: 10px;
   font-weight: 700;
   color: rgba(213, 243, 105, 0.637)!important;
