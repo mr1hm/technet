@@ -31,11 +31,10 @@ body {
 }
 
 .featured-items-header {
-  font-family: 'Knewave', cursive;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #8E8D8A;
-  /* text-decoration: underline; */
+  text-transform: uppercase;
 }
 
 .image-slide {
@@ -84,6 +83,10 @@ body {
   background-color: #D8C3A5;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.carousel-cardTitle {
+  text-transform: uppercase;
 }
 
 .carouselSpecs {
