@@ -19,10 +19,24 @@ export default class CheckoutForm extends React.Component {
       cityValidated: false,
       stateValidated: false,
       zipValidated: false,
-      checkout: false
+      checkout: false,
+      cardInputValue: '',
+      attr: {
+        disabled: false
+      }
     };
     this.handleOrder = this.handleOrder.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.checkout !== this.state.checkout) {
+      const cardInputValue = this.state.cardInputValue.replace(/[0-9]{12}/g, '****************');
+      this.setState({ cardInputValue }, () => {
+        const attr = { disabled: !this.state.attr.disabled };
+        this.setState({ attr });
+      });
+    }
   }
 
   handleOrder() {
