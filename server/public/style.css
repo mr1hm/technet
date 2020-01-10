@@ -18,6 +18,19 @@ body {
 
 .detailsMain {
   background-color: #EAE7DC;
+  /* border: 2px solid maroon;
+  border-radius: 5px; */
+}
+
+.detailsProductTitle {
+  text-transform: uppercase;
+}
+
+.details-longDescription {
+  border: 2px solid maroon;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
 }
 
 .cardDiv h5 {
