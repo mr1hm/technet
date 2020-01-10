@@ -49,7 +49,7 @@ class ProductDetails extends React.Component {
             <img src={this.state.product.mainImage} className="productDetailsImg" alt="product"></img>
           </div>
           <div className="col col-xs col-sm col-md single-post-content-wrapper p-3">
-            <h1>{this.state.product.name}</h1>
+            <h1 className="detailsProductTitle">{this.state.product.name}</h1>
             <br />
             <div className="priceTag">
               {`$${this.state.product.price}`}
@@ -63,7 +63,7 @@ class ProductDetails extends React.Component {
             <br /><br />
           </div>
           <div className="row">
-            <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 longDescription p-3">
+            <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 details-longDescription p-3">
               {this.state.product.longDescription}
             </div>
           </div>
