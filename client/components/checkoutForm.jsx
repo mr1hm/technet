@@ -50,10 +50,11 @@ export default class CheckoutForm extends React.Component {
       if (/[0-9]{16,16}/.test(value)) {
         this.setState(prevState => ({
           userInfo: { ...prevState.userInfo, [name]: value },
-          cardValidated: true
+          cardValidated: true,
+          cardInputValue: value
         }));
       } else {
-        this.setState({ cardValidated: false });
+        this.setState({ cardValidated: false, cardInputValue: value });
       }
     }
     if (name === 'userName') {
