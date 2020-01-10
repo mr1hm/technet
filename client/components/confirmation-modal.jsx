@@ -25,7 +25,7 @@ export default class ConfirmationModal extends React.Component {
           <div className="row">
             <div className="col">
               <p className="checkout-font">
-                This website was created with the intent of demonstrating an example e-commerce website. It&#39;s in no way affiliated with any other e-commerce websites
+                This website was developed with the intent of demonstrating an example e-commerce website. It&#39;s in no way affiliated with any other e-commerce websites
                 that may use a similar or same name.
                 <br/><br/>
                 Please click <span style={{ fontWeight: 600, textDecoration: 'underline' }}>confirm</span> to &quot;place&quot; your order and be redirected to the home page, or
