@@ -41,7 +41,7 @@ class ProductDetails extends React.Component {
       <>
       {this.state.productAdded ? <ConfirmationModal cart={this.props.cart} productAdded={productAdded} product={product} /> : null}
       <div className="container detailsMain">
-        <article className="row single-post mt-5 no-gutters">
+        <article className="row single-post no-gutters">
           <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <button className="btn btn-warning mt-3 ml-3 backToListBtn" onClick={() => this.props.setView('catalog', {})}>Back to Catalog</button>
           </div>
