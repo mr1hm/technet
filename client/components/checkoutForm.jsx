@@ -46,65 +46,80 @@ export default class CheckoutForm extends React.Component {
   handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
+    if (value.length === 0) {
+      this.setState(prevState => ({ userInfo: { ...prevState.userInfo, [name]: value } }));
+      return;
+    }
     if (name === 'cardNumber') {
-      if (/[0-9]{16,16}/.test(value)) {
-        this.setState(prevState => ({
-          userInfo: { ...prevState.userInfo, [name]: value },
-          cardValidated: true,
-          cardInputValue: value
-        }));
-      } else {
+      if (value.length === 0) {
+        this.setState({ cardInputValue: '' });
+        return;
+      }
+      if (/^\d{0,16}$/g.test(value)) {
         this.setState({ cardValidated: false, cardInputValue: value });
+        if (/\d{16}/.test(value)) {
+          this.setState(prevState => ({
+            userInfo: { ...prevState.userInfo, [name]: value },
+            cardValidated: true,
+            cardInputValue: value
+          }));
+        }
       }
     }
     if (name === 'userName') {
-      if (/[^0-9!?=][a-zA-Z]{2,}/.test(value)) {
-        this.setState(prevState => ({
-          userInfo: { ...prevState.userInfo, [name]: value },
-          nameValidated: true
-        }));
-      } else {
+      if (/^[a-z\sA-Z]*$/g.test(value) && value.length <= 65) {
         this.setState({ nameValidated: false });
+        if (/^[a-z\sA-Z]*$/g.test(value)) {
+          this.setState(prevState => ({
+            userInfo: { ...prevState.userInfo, [name]: value },
+            nameValidated: true
+          }));
+        }
       }
     }
     if (name === 'userAddress') {
-      if (/[^$!@#-=%&*][a-zA-Z0-9]{1,}/.test(value)) {
+      if (/^[0-9\sa-zA-Z]{2,156}$/g.test(value) && (value.length >= 6 && value.length <= 42)) {
         this.setState(prevState => ({
           userInfo: { ...prevState.userInfo, [name]: value },
           addressValidated: true
         }));
       } else {
-        this.setState({ addressValidated: false });
+        this.setState(prevState => ({ addressValidated: false, userInfo: { ...prevState.userInfo, [name]: value } }));
       }
     }
     if (name === 'userCity') {
-      if (/[^0-9$!@#-=%&*][a-zA-Z]{1,}/.test(value)) {
-        this.setState(prevState => ({
-          userInfo: { ...prevState.userInfo, [name]: value },
-          cityValidated: true
-        }));
+      if (/^[a-zA-Z]{3,50}$/g.test(value)) {
+        this.setState(prevState => {
+          const upperCase = value.charAt().toUpperCase();
+          const newValue = upperCase.concat(value.substring(1));
+          return ({
+            userInfo: { ...prevState.userInfo, [name]: newValue },
+            cityValidated: true
+          });
+        });
       } else {
-        this.setState({ cityValidated: false });
+        const upperCase = value.charAt().toUpperCase();
+        const newValue = upperCase.concat(value.substring(1));
+        this.setState(prevState => ({ cityValidated: false, userInfo: { ...prevState.userInfo, [name]: newValue } }));
       }
     }
     if (name === 'userState') {
-      if (/[^0-9$!@#-=%&*][a-zA-Z]{1,}/.test(value)) {
+      if (/^[a-zA-Z]{2}$/.test(value)) {
         this.setState(prevState => ({
-          userInfo: { ...prevState.userInfo, [name]: value },
+          userInfo: { ...prevState.userInfo, [name]: value.toUpperCase() },
           stateValidated: true
         }));
       } else {
-        this.setState({ stateValidated: false });
+        if (/[(^\d\s!@#$%^&*()_+-;)]/.test(value)) return;
+        this.setState(prevState => ({ stateValidated: false, userInfo: { ...prevState.userInfo, [name]: value.toUpperCase() } }));
       }
     }
-    if (name === 'userZip') {
-      if (/[0-9]{5,5}/.test(value)) {
-        this.setState(prevState => ({
-          userInfo: { ...prevState.userInfo, [name]: value },
-          zipValidated: true
-        }));
+    if (name === 'userZip') { // needs to be checked
+      if (/^[\d]{5}$/.test(value)) {
+        this.setState(prevState => ({ userInfo: { ...prevState.userInfo, [name]: value }, zipValidated: true }));
       } else {
-        this.setState({ zipValidated: false });
+        if (!(/^[\d]{0,5}$/.test(value))) return;
+        if (/^[\d]{0,5}$/.test(value)) this.setState(prevState => ({ userInfo: { ...prevState.userInfo, [name]: value }, zipValidated: false }));
       }
     }
   }
@@ -130,38 +145,38 @@ export default class CheckoutForm extends React.Component {
                 <label className="checkout-font" htmlFor="exampleInputEmail1">NAME</label>
                 <br/>
                 {nameValidated && userInfo.userName !== '' ? null : <span style={{ color: 'red', fontSize: '12px' }}>Please enter a valid name</span>}
-                <input onChange={this.handleChange} name="userName" {...attr} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full Name"></input>
+                <input maxLength="65" onChange={this.handleChange} value={userInfo.userName} name="userName" {...attr} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full Name"></input>
               </div>
               <div className="form-group">
                 <label className="checkout-font" htmlFor="exampleInputPassword1">CARD</label>
                 <br/>
                 {cardValidated && userInfo.cardNumber !== null ? null : <span style={{ color: 'red', fontSize: '12px' }}>Please enter a valid credit card number</span>}
-                <input onChange={this.handleChange} name="cardNumber" {...attr} value={cardInputValue} type="text" className="form-control" id="exampleInputPassword1" placeholder="Credit Card Number"></input>
+                <input maxLength="16" onChange={this.handleChange} name="cardNumber" {...attr} value={cardInputValue} type="text" className="form-control" id="exampleInputPassword1" placeholder="Credit Card Number"></input>
               </div>
               <h4 className="checkout-font" style={{ letterSpacing: '0.5px' }}>SHIPPING</h4>
               <div className="form-group">
                 <label className="checkout-font" htmlFor="userAddress">ADDRESS</label>
                 <br/>
                 {addressValidated && userInfo.userAddress !== '' ? null : <span style={{ color: 'red', fontSize: '12px' }}>Please enter a valid address (Street number and Street name)</span>}
-                <input onChange={this.handleChange} type="text" {...attr} name="userAddress" className="form-control" id="userAddress" rows="3"></input>
+                <input maxLength="42" onChange={this.handleChange} value={userInfo.userAddress} type="text" {...attr} name="userAddress" className="form-control" id="userAddress" rows="3"></input>
               </div>
               <div className="form-group">
                 <label className="checkout-font" htmlFor="userCity">CITY</label>
                 <br />
                 {cityValidated && userInfo.userCity !== '' ? null : <span style={{ color: 'red', fontSize: '12px' }}>Please enter a valid city</span>}
-                <input onChange={this.handleChange} {...attr} name="userCity" className="form-control" id="userCity" rows="3"></input>
+                <input maxLength="50" onChange={this.handleChange} value={userInfo.userCity} {...attr} name="userCity" className="form-control" id="userCity" rows="3"></input>
               </div>
               <div className="form-group">
                 <label className="checkout-font" htmlFor="userState">STATE</label>
                 <br />
                 {stateValidated && userInfo.userState !== '' ? null : <span style={{ color: 'red', fontSize: '12px' }}>Please enter a valid state</span>}
-                <input onChange={this.handleChange} {...attr} name="userState" className="form-control" id="userState" rows="3"></input>
+                <input maxLength="2" onChange={this.handleChange} value={userInfo.userState} {...attr} name="userState" className="form-control" id="userState" rows="3"></input>
               </div>
               <div className="form-group">
                 <label className="checkout-font" htmlFor="userZip">ZIP CODE</label>
                 <br />
                 {zipValidated && userInfo.userZip !== '' ? null : <span style={{ color: 'red', fontSize: '12px' }}>Please enter a valid zip code</span>}
-                <input onChange={this.handleChange} {...attr} type="text" name="userZip" className="form-control" id="userZip" rows="3"></input>
+                <input maxLength="5" value={userInfo.userZip} onChange={this.handleChange} {...attr} type="text" name="userZip" className="form-control" id="userZip" rows="3"></input>
               </div>
             </div>
             <div className="col">
