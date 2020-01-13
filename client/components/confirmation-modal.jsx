@@ -92,7 +92,7 @@ export default class ConfirmationModal extends React.Component {
           <div className="row">
             <div className="col">
               <br/>
-              <p>Product successfully added to cart!</p>
+              <p><i>Product <span className="added-success">successfully</span> added to cart!</i></p>
             </div>
           </div>
         </div>
