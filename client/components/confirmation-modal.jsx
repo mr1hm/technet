@@ -73,7 +73,7 @@ export default class ConfirmationModal extends React.Component {
     if (productAdded) {
       const findProduct = cart.find(item => product.id === item.id);
       return (
-        <div className="container confirmation-modal fadeOut">
+        <div className="container confirmation-modal fade">
           <div className="row">
             <div className="col mt-1">
               <h5>{product.name}</h5>
