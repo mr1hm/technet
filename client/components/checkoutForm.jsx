@@ -47,8 +47,10 @@ export default class CheckoutForm extends React.Component {
     const name = event.target.name;
     const value = event.target.value;
     if (value.length === 0) {
-      this.setState(prevState => ({ userInfo: { ...prevState.userInfo, [name]: value } }));
-      return;
+      if (name !== 'cardNumber') {
+        this.setState(prevState => ({ userInfo: { ...prevState.userInfo, [name]: value } }));
+        return;
+      }
     }
     if (name === 'cardNumber') {
       if (value.length === 0) {
