@@ -13,7 +13,7 @@ body {
 
 .productDetailsImg {
   width: 400px;
-  height: 300px;
+  height: 100%;
 }
 
 .detailsMain {
@@ -289,34 +289,36 @@ body {
 }
 
 .confirmation-modal {
-  border: 2px solid #E85A4F;
+  border: 2px solid white;
   border-radius: 5px;
   width: 310px;
-  height: 175px;
+  height: 200px;
   position: absolute;
+  z-index: 1;
   left: 78%;
   top: 10%;
   background-color: #D8C3A5;
 }
 
-@keyframes modalFadeOut {
-  from {transform: translateY(0); opacity: 1;}
-  to {transform: translateY(50%); opacity: 0;}
-}
-
 .confirmation-modal {
-  -webkit-animation: modalFadeOut 500ms ease-in-out 0.5s both;
-  animation: modalFadeOut 500ms ease-in-out 0.5s both;
+  -webkit-animation: modalFade 500ms ease-in-out 0.5s both;
+  animation: modalFade 500ms ease-in-out 0.5s both;
 }
 
-@keyframes modalFadeIn {
-  from {transform: translateY(-50%);opacity: 0;}
-  to {transform: translateY(0);opacity: 1;}
+@keyframes modalFade {
+  0% {transform: translateY(-50%);opacity: 0;}
+  25% {transform: translateY(0);opacity: 1;}
+  75% {transform: translateY(0);opacity: 1;}
+  100% {transform: translateY(50%); opacity: 0;}
 }
 
-.confirmation-modal.fadeIn {
-  -webkit-animation: modalFadeIn ease-in-out 0.5s both;
-  animation: modalFadeIn ease-in-out 0.5s both;
+.confirmation-modal.fade {
+  -webkit-animation: modalFade ease-in-out 2s both;
+  animation: modalFade ease-in-out 2s both;
+}
+
+.added-success {
+  color: green;
 }
 
 .incrementIcon,
@@ -343,6 +345,7 @@ body {
 
 .delete-confirmation-modal {
   border: 2px solid whitesmoke;
+  border-radius: 5px;
   width: 700px;
   height: 15vh;
 }

@@ -27,7 +27,7 @@ class ProductDetails extends React.Component {
   handleAddProductClick() {
     const { product, productAdded } = this.state;
     this.setState({ productAdded: !productAdded });
-    if (product) this.props.addToCart(this.state.product);
+    if (product) this.props.addToCart(product);
   }
 
   render() {
