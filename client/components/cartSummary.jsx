@@ -15,7 +15,7 @@ export default class CartSummary extends React.Component {
       return (
         <>
         <div className="row">
-          <div className="offset-2 col-8">
+          <div className="offset-2 col-8 mb-1">
             <button className="btn btn-warning backToListBtn mt-2 mb-2" onClick={() => this.props.clickHandler('catalog', {})}>Back To Catalog</button>
           </div>
         </div>
@@ -39,7 +39,7 @@ export default class CartSummary extends React.Component {
               />
             )}
           <div className="row">
-            <div className="total-price offset-2 col-8 d-flex justify-content-between mb-2">
+            <div className="total-price offset-2 col-8 d-flex justify-content-between mb-1">
               TOTAL: {`$${this.props.cartTotal().toFixed(2)}`}
               <button className="btn btn-primary p-1" onClick={() => this.props.clickHandler('checkout', {})}>Checkout</button>
             </div>

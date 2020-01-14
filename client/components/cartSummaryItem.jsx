@@ -36,7 +36,7 @@ export default class CartSummaryItem extends React.Component {
                   <img className="cartImageDiv" src={this.props.cartItemImage} alt="image"></img>
                 </div>
                 <div className="card-body">
-                  <h4 className="card-title">{this.props.cartItemName}</h4>
+                  <h4 className="card-title cartSummary-productName">{this.props.cartItemName}</h4>
                   {this.props.cartItemCount > 1 ? <p className="itemCount">QUANTITY: <button onClick={() => this.props.handleDecrement(this.props.cartItemID)} className="decrementBtn"><i className="fas fa-minus-circle decrementIcon"></i></button>{this.props.cartItemCount}<button onClick={() => this.props.handleIncrement(this.props.cartItemID)} name="increment" className="incrementBtn"><i className="fas fa-plus-circle incrementIcon"></i></button></p>
                     : <p className="itemCount">QUANTITY: {this.props.cartItemCount}<button onClick={() => this.props.handleIncrement(this.props.cartItemID)} className="incrementBtn"><i className="fas fa-plus-circle incrementIcon"></i></button></p>}
                   <p className="cartItemPriceTag">{`$${productTotal}`}</p>

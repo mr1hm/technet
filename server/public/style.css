@@ -361,6 +361,10 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.cartSummary-productName {
+  text-transform: uppercase;
+}
+
 /*-------------------------------------------------------------------
 
                         10. RESPONSIVE
