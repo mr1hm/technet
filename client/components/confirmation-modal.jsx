@@ -31,7 +31,7 @@ export default class ConfirmationModal extends React.Component {
                 Please click <span style={{ fontWeight: 600, textDecoration: 'underline' }}>confirm</span> to &quot;place&quot; your order and be redirected to the home page, or
                 click <span style={{ fontWeight: 600, textDecoration: 'underline' }}>cancel</span> to maintain the items in your cart and stay on this page.
                 <br/><br/>
-                Your information will <strong>not</strong> be saved and there will be <stron>no</stron> charge whatsoever to any credit card number that you inputted into the Card Information field.
+                Your information will <strong>NOT</strong> be saved and there will be <stron>no</stron> charge whatsoever to any 16-digit number that you inputted into the Card Information field.
               </p>
             </div>
           </div>
