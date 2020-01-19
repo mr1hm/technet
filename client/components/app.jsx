@@ -83,22 +83,11 @@ export default class App extends React.Component {
   }
 
   placeOrder(userInfo) {
-    const myInit = {
-      method: 'POST',
-      body: JSON.stringify(userInfo),
-      header: {
-        'Content-Type': 'application/json'
-      }
-    };
-    fetch('/api/orders.php', myInit)
-      .then(response => response.json())
-      .then(userInfo => this.setState({
-        cart: this.state.cart.concat(userInfo)
-      }))
-      .then(() => this.setState({
-        cart: []
-      }))
-      .catch(error => console.error(error.message));
+    const order = { name: userInfo.userName, address: `${userInfo.userAddress} ${userInfo.userCity}, ${userInfo.userState} ${userInfo.userZip}` };
+    fetch(`/api/orders.php`, { method: 'POST', body: JSON.stringify(order), header: { 'Content-Type': 'application/json' } })
+      .then(res => res.json())
+      .then(user => this.setState({ cart: [] }))
+      .catch(err => console.error(err));
     this.setState({
       view: { name: 'catalog', params: {} }
     });
