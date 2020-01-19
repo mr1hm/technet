@@ -63,7 +63,7 @@ if (!$cartId) {
   if (mysqli_affected_rows($conn) === 0) {
     throw new Exception('cart did not get added');
   }
-  $cartId = $_SESSION['cartId'] = mysqli_insert_id($conn);
+  $cartId = $_SESSION['cartId'] = mysqli_insert_id($conn); // setting $_SESSION['cartId'] into cookie if no cartId exists.
 }
 
 $cartItemsInsertQuery = "INSERT INTO `cartItems`
