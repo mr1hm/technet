@@ -25,7 +25,7 @@ if (!empty($_SESSION['cartId'])) {
 if (isset($bodyData['category'])) {
   $category = $bodyData['category'];
   $query = "SELECT * FROM `products` AS p
-            WHERE p.`category` = $category";
+            WHERE p.`category` = '$category'";
   $result = mysqli_query($conn, $query);
 
   if (!$result) {
@@ -63,7 +63,7 @@ if (!$cartId) {
   if (mysqli_affected_rows($conn) === 0) {
     throw new Exception('cart did not get added');
   }
-  $cartId = $_SESSION['cartId'] = mysqli_insert_id($conn);
+  $cartId = $_SESSION['cartId'] = mysqli_insert_id($conn); // setting $_SESSION['cartId'] into cookie if no cartId exists.
 }
 
 $cartItemsInsertQuery = "INSERT INTO `cartItems`
@@ -87,17 +87,26 @@ $transactionResult = mysqli_query($conn, 'COMMIT');
 print(json_encode($bodyData));
 
 if (isset($bodyData['quantity'])) {
-  $count = $bodyData['quantity'];
-  $countID = $bodyData['id'];
+  // $count = $bodyData['quantity'];
+  // $countID = $bodyData['id'];
+  $stmt = $conn->prepare("UPDATE `cartItems` SET `count` = ? WHERE `productID` = ? AND `cartID` = ?");
+  $stmt->bind_param('iii', intval($bodyData['quantity']), intval($bodyData['id']), intval($cartId));
+  $status = $stmt->execute();
+  // if ($stmt->affected_rows === 0) exit('what the fudge man'); why is result coming up as false ONLY when incrementing the quantity of the product?
+  if (!$status) throw new Exception('stmt did not execute' . mysqli_error($conn));
+  $stmt->close();
+  // preg_match_all('/(\S[^:]+): (\d+)/', $conn->info, $matches);
+  // $infoArr = array_combine($matches[1], $matches[2]);
+  // var_export($infoArr);
 
-  $query = "UPDATE `cartItems`
-            SET `count` = $count
-            WHERE `productID` = $countID";
-  $result = mysqli_query($conn, $query);
+  // $query = "UPDATE `cartItems`
+  //           SET `count` = $count
+  //           WHERE `productID` = $countID";
+  // $result = mysqli_query($conn, $query);
 
-  if (!$result) {
-    throw new Exception('error in quantity update from cart summary ' . mysqli_error($conn));
-  }
+  // if (!$result) {
+  //   throw new Exception('error in quantity update from cart summary ' . mysqli_error($conn));
+  // }
 }
 
 ?>
