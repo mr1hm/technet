@@ -10,6 +10,7 @@ export default class ConfirmationModal extends React.Component {
 
   handleSubmit(userInfo) {
     this.props.placeOrder(userInfo);
+    this.props.handleOrder();
   }
 
   render() {
