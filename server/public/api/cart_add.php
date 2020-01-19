@@ -25,7 +25,7 @@ if (!empty($_SESSION['cartId'])) {
 if (isset($bodyData['category'])) {
   $category = $bodyData['category'];
   $query = "SELECT * FROM `products` AS p
-            WHERE p.`category` = $category";
+            WHERE p.`category` = '$category'";
   $result = mysqli_query($conn, $query);
 
   if (!$result) {
