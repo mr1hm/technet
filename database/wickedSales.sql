@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 24, 2019 at 02:03 AM
+-- Generation Time: Jan 19, 2020 at 07:50 AM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.1
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `cart`
 --
 
-DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `created` datetime NOT NULL
@@ -37,7 +36,11 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `created`) VALUES
-(1, '2019-12-23 20:37:15');
+(1, '2020-01-06 05:47:13'),
+(2, '2020-01-06 20:03:27'),
+(3, '2020-01-13 20:02:45'),
+(4, '2020-01-19 04:14:00'),
+(5, '2020-01-19 06:00:20');
 
 -- --------------------------------------------------------
 
@@ -45,7 +48,6 @@ INSERT INTO `cart` (`id`, `created`) VALUES
 -- Table structure for table `cartItems`
 --
 
-DROP TABLE IF EXISTS `cartItems`;
 CREATE TABLE `cartItems` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `productID` mediumint(8) UNSIGNED NOT NULL,
@@ -61,9 +63,18 @@ CREATE TABLE `cartItems` (
 --
 
 INSERT INTO `cartItems` (`id`, `productID`, `count`, `price`, `added`, `updated`, `cartID`) VALUES
-(40, 8, 1, 355900, '2019-12-24 01:52:07', '2019-12-24 01:52:07', 1),
-(41, 11, 1, 7799, '2019-12-24 01:52:11', '2019-12-24 01:52:11', 1),
-(42, 12, 2, 10300, '2019-12-24 01:52:14', '2019-12-24 01:53:03', 1);
+(1, 7, 1, 119999, '2020-01-06 05:47:13', '2020-01-13 20:27:47', 1),
+(10, 10, 1, 159999, '2020-01-06 06:06:46', '2020-01-06 06:06:46', 1),
+(17, 12, 1, 10300, '2020-01-06 20:28:37', '2020-01-19 05:15:04', 2),
+(44, 9, 1, 399999, '2020-01-06 21:31:17', '2020-01-06 21:31:27', 2),
+(51, 2, 1, 2595, '2020-01-06 21:33:24', '2020-01-06 21:33:24', 2),
+(52, 11, 2, 7799, '2020-01-06 21:33:40', '2020-01-06 21:33:45', 2),
+(66, 8, 3, 355900, '2020-01-13 20:13:21', '2020-01-13 20:31:10', 3),
+(67, 11, 4, 7799, '2020-01-13 20:13:28', '2020-01-13 20:31:29', 3),
+(79, 7, 3, 119999, '2020-01-13 20:30:17', '2020-01-13 20:45:22', 3),
+(80, 12, 2, 10300, '2020-01-19 04:14:00', '2020-01-19 05:37:53', 4),
+(158, 12, 1, 10300, '2020-01-19 06:00:20', '2020-01-19 06:36:36', 5),
+(171, 7, 1, 119999, '2020-01-19 06:36:40', '2020-01-19 06:36:40', 5);
 
 -- --------------------------------------------------------
 
@@ -71,7 +82,6 @@ INSERT INTO `cartItems` (`id`, `productID`, `count`, `price`, `added`, `updated`
 -- Table structure for table `images`
 --
 
-DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `url` varchar(1000) NOT NULL,
@@ -124,10 +134,22 @@ INSERT INTO `images` (`id`, `url`, `productId`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(62) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `cartID` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `name` varchar(62) NOT NULL,
@@ -182,6 +204,12 @@ ALTER TABLE `images`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
@@ -195,17 +223,22 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `cartItems`
 --
 ALTER TABLE `cartItems`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `products`
 --
