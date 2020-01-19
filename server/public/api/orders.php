@@ -2,28 +2,25 @@
 
 header('Content-Type: application/json');
 require_once 'functions.php';
+session_start();
 set_exception_handler('error_handler');
 require_once 'db_connection.php';
 
-$bodyData = getBodyData();
+$body = getBodyData();
 
 $method = $_SERVER['REQUEST_METHOD'];
 $order = file_get_contents('php://input');
 
-// if ($method === 'GET') {
-
-// }
-
-// if ($method === 'POST') {
-//   $cartID = $bodyData['cartID'];
-
-//   $query = "DELETE FROM `cartItems` WHERE `cartID` = $cartID";
-//   $result = mysqli_query($conn, $query);
-
-//   if (!$result) {
-//     throw new Exception('error deleting from cartItems ' . mysqli_error($conn));
-//   }
-// }
+if ($method === 'POST') {
+  $cartId = $_SESSION['cartId'];
+  $name = htmlentities($body['name'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+  $address = htmlentities($body['address'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+  $stmt = $conn->prepare("INSERT INTO `orders` (`name`, `address`, `cartID`) VALUES (?, ?, ?)");
+  $stmt->bind_param('sss', $name, $address, $cartId);
+  $status = $stmt->execute();
+  if (!$status) throw new Exception('order execution failed ' . mysqli_error($conn));
+  $stmt->close();
+}
 
 if ($method != 'POST') {
   http_response_code(404);
